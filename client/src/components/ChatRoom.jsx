@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function ChatRoom({ room, messages, user, socket }) {
+export default function ChatRoom({ room, messages, socket }) {
   const [chat, setChat] = useState("");
   const [typingUser, setTypingUser] = useState("");
   const [liveMessages, setLiveMessages] = useState([]);
@@ -24,7 +24,7 @@ export default function ChatRoom({ room, messages, user, socket }) {
       socket.off("typing");
       socket.off("stopTyping");
     };
-  }, []);
+  }, [socket]);
 
   const handleTyping = () => {
     socket.emit("typing");
